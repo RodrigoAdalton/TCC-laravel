@@ -15,7 +15,21 @@ class CreateReadingsTable extends Migration
     {
         Schema::create('readings', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('users_id')->unsigned()->nullable();
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->integer('places_id')->unsigned()->nullable();
+            $table->foreign('places_id')->references('id')->on('places')->onDelete('cascade');
+
+            $table->decimal('temperature')->nullable();
+            $table->decimal('co')->nullable();
+            $table->decimal('humidity')->nullable();
+            $table->decimal('dust_particle')->nullable();
+
             $table->timestamps();
+
+            $table->string('comments')->nullable();
         });
     }
 
