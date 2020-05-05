@@ -19,6 +19,7 @@ class CreatePlacesTable extends Migration
             $table->integer('users_id')->unsigned()->nullable();
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
 
+            $table->string('name')->nullable();
             $table->string('street')->nullable();
             $table->string('number')->nullable();
             $table->string('district')->nullable();
